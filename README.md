@@ -1,4 +1,6 @@
 # 中国象棋（术语版）
+> 不要嫌简陋，老板看不见。堪称浑水摸鱼神器！
+> 
 > 原项目ChineseChess（坐标版）地址：https://github.com/sks853/ChineseChess.git
 
 ## 玩法说明
