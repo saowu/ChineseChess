@@ -3,5 +3,9 @@
 
 ## 玩法说明
 通过使用象棋走棋术语，来控制棋子
+
+- 車1进1
 ![screenshot-20231103-143039.png](image%2Fscreenshot-20231103-143039.png)
-![screenshot-20231103-143213.png](image%2Fscreenshot-20231103-143213.png)
+
+- 仕4进5
+![screenshot-20231103-144845.png](image%2Fscreenshot-20231103-144845.png)
