@@ -414,7 +414,7 @@ public class RuleDefined {
                 }
             }
         }
-        System.out.println(posDstX + "," + posDstY);
+        // System.out.println(posDstX + "," + posDstY);
         if (isPermitRuleMove(posSrcX, posSrcY, posDstX, posDstY, getFlagPlayer())) {
             moveToPos(posSrcX, posSrcY, posDstX, posDstY);
             System.out.println("===========================移动成功！===========================");
@@ -440,17 +440,7 @@ public class RuleDefined {
     public void moveCoordinate(short relative, String piece, short pieceY, String operate, short number) {
         Short tag = Const.PIECE_MAP.get(piece);
         if (pieceY < 0) {
-            // 同列双子，遍历
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if (RuleDefined.chessboard[i][j] == tag) {
-                        pieceY = (short) (tag > 10 ? (j + 1) : (9 - j));
-                        // 跳出循环
-                        i = 1000;
-                        break;
-                    }
-                }
-            }
+            pieceY = searchPieceY(tag);
         }
         short oY;
         if (Const.PIECE_MAP.get(piece) < 10) {
@@ -458,7 +448,7 @@ public class RuleDefined {
             oY = (short) (9 - pieceY);
             for (short oX = 0; oX < 10; oX++) {
                 if (RuleDefined.chessboard[oX][oY] == tag) {
-                    System.out.println(oX + "," + oY);
+                    // System.out.println(oX + "," + oY);
                     if (relative-- == 1) {
                         newCoordinate(piece, oX, oY, operate, number);
                         return;
@@ -470,7 +460,7 @@ public class RuleDefined {
         oY = (short) (pieceY - 1);
         for (short oX = 9; oX > -1; oX--) {
             if (RuleDefined.chessboard[oX][oY] == tag) {
-                System.out.println(oX + "," + oY);
+                // System.out.println(oX + "," + oY);
                 if (relative-- == 1) {
                     newCoordinate(piece, oX, oY, operate, number);
                     return;
@@ -478,5 +468,24 @@ public class RuleDefined {
             }
         }
         System.out.println("找不到棋子，请重新输入！");
+    }
+
+    /**
+     * 寻找棋子的列数（从左到右1-9）
+     *
+     * @param tag 棋子16进制标识
+     * @return
+     */
+    public short searchPieceY(short tag) {
+        // 同列双子，遍历
+        for (short i = 0; i < 10; i++) {
+            for (short j = 0; j < 9; j++) {
+                if (RuleDefined.chessboard[i][j] == tag) {
+                    // 跳出循环
+                    return (short) (tag > 10 ? (j + 1) : (9 - j));
+                }
+            }
+        }
+        return -1;
     }
 }

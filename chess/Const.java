@@ -135,11 +135,14 @@ public class Const {
      * @param posPiece 二维数组形式的棋盘棋子位置
      */
     public static void printPiece(short[][] posPiece, short flagPlayer) {
-        String[] numberId = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09"};
+        // String[] numberId = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09"};
         if (FLAG_R == flagPlayer) {
-            System.out.println("-- 零 一 二 三 四 五 六 七 八");
+            // System.out.println("-- 零 一 二 三 四 五 六 七 八");
             for (int i = RANGE_CHESSBOARD[1][0]; i < RANGE_CHESSBOARD[1][1] + 1; ++i) {
-                System.out.print(numberId[i] + " ");
+                // System.out.print(numberId[i] + " ");
+                if (i == 5) {
+                    System.out.println("+++++++++++++++++++++++");
+                }
                 for (int j = RANGE_CHESSBOARD[0][0]; j < RANGE_CHESSBOARD[0][1] + 1; ++j) {
                     String piece = PIECE_FORMAT.getProperty(String.valueOf(posPiece[i][j]));
                     if (Const.PIECE_MAP.containsKey(piece) && Const.PIECE_MAP.get(piece) < 10) {
@@ -152,9 +155,12 @@ public class Const {
             }
 
         } else if (FLAG_B == flagPlayer) {
-            System.out.println("-- 八 七 六 五 四 三 二 一 零");
+            // System.out.println("-- 八 七 六 五 四 三 二 一 零");
             for (int i = RANGE_CHESSBOARD[1][1]; i >= RANGE_CHESSBOARD[1][0]; --i) {
-                System.out.print(numberId[i] + " ");
+                // System.out.print(numberId[i] + " ");
+                if (i == 4) {
+                    System.out.println("+++++++++++++++++++++++");
+                }
                 for (int j = RANGE_CHESSBOARD[0][1]; j >= RANGE_CHESSBOARD[0][0]; --j) {
                     String piece = PIECE_FORMAT.getProperty(String.valueOf(posPiece[i][j]));
                     if (Const.PIECE_MAP.containsKey(piece) && Const.PIECE_MAP.get(piece) < 10) {

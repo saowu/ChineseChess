@@ -25,10 +25,10 @@ public class StartMain {
                 String palyer = Const.PIECE_FORMAT.getProperty(String.valueOf(pieceRule.getFlagPlayer()));
                 System.out.format("当前阵营：%s\t", "红".equals(palyer) ? "\033[31m" + palyer + "方\033[0m" : palyer + "方");
 
-                System.out.print("请输入行棋术语（车1进1 ）：");
+                System.out.print("请输入行棋术语（車1进1 ）：");
                 String move = sc.next();
                 if (move.length() != 4) {
-                    System.err.println("输入不合法，请重新输入！");
+                    System.out.println("====================输入不合法，请重新输入！====================");
                     continue;
                 }
                 short relative = 1;
@@ -42,10 +42,8 @@ public class StartMain {
                 } else {
                     pieceY = Short.parseShort(move.substring(1, 2));
                 }
-
                 String operate = move.substring(2, 3);
                 short number = Short.parseShort(move.substring(3, 4));
-
                 pieceRule.moveCoordinate(relative, piece, pieceY, operate, number);
             }
         }
